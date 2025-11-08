@@ -8,6 +8,8 @@ import { useForm } from "@inertiajs/react";
 
 const SignUpPage: React.FC = () => {
     const { data, setData, post } = useForm({
+        first_name: "",
+        last_name: "",
         email: "",
     });
 
@@ -16,6 +18,8 @@ const SignUpPage: React.FC = () => {
     };
 
     useNotificationEffect(() => {
+        setData("first_name", "");
+        setData("last_name", "");
         setData("email", "");
     }, NotificationType.SUCCESS);
 
@@ -24,8 +28,20 @@ const SignUpPage: React.FC = () => {
             <h1>Sign Up</h1>
             <Form onSubmit={handleSubmit}>
                 <TextInput
-                    placeholder="Email"
+                    name="first_name"
+                    placeholder="First Name"
+                    data={data}
+                    setData={setData}
+                />
+                <TextInput
+                    name="last_name"
+                    placeholder="Last Name"
+                    data={data}
+                    setData={setData}
+                />
+                <TextInput
                     name="email"
+                    placeholder="Email"
                     data={data}
                     setData={setData}
                 />

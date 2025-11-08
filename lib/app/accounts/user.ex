@@ -3,6 +3,8 @@ defmodule App.Accounts.User do
   import Ecto.Changeset
 
   schema "users" do
+    field :first_name, :string
+    field :last_name, :string
     field :email, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
@@ -10,6 +12,15 @@ defmodule App.Accounts.User do
     field :authenticated_at, :utc_datetime, virtual: true
 
     timestamps(type: :utc_datetime)
+  end
+
+  @doc """
+  A user changeset for verifying first name and last name are set while registering 
+  """
+  def name_changeset(user, attrs) do
+    user
+    |> cast(attrs, [:first_name, :last_name])
+    |> validate_required([:first_name, :last_name], message: "is required")
   end
 
   @doc """
@@ -32,10 +43,8 @@ defmodule App.Accounts.User do
   defp validate_email(changeset, opts) do
     changeset =
       changeset
-      |> validate_required([:email])
-      |> validate_format(:email, ~r/^[^@,;\s]+@[^@,;\s]+$/,
-        message: "must have the @ sign and no spaces"
-      )
+      |> validate_required([:email], message: "is required")
+      |> validate_format(:email, ~r/^[^@,;\s]+@[^@,;\s]+$/, message: "is invalid")
       |> validate_length(:email, max: 160)
 
     if Keyword.get(opts, :validate_unique, true) do
@@ -80,7 +89,7 @@ defmodule App.Accounts.User do
 
   defp validate_password(changeset, opts) do
     changeset
-    |> validate_required([:password])
+    |> validate_required([:password, :password_confirmation], message: "is required")
     |> validate_length(:password, min: 12, max: 72)
     # Examples of additional password validation:
     |> validate_format(:password, ~r/[a-z]/,
