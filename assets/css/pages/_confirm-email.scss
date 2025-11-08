@@ -1,0 +1,20 @@
+@use "variables/colors" as colors;
+
+.confirm-email-page {
+    h1,
+    h4 {
+        color: colors.$iguana-green-100;
+    }
+
+    h4 {
+        margin-block: 20px 40px;
+    }
+
+    button {
+        background: colors.$iguana-green-100;
+
+        &:hover {
+            background: colors.$iguana-green-60;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+@use "variables/colors" as colors;
+
+.invalid-token-page {
+    h1,
+    h4 {
+        color: colors.$cadmium-red-100;
+    }
+
+    h4 {
+        margin-block: 20px 40px;
+    }
+
+    button {
+        background: colors.$cadmium-red-100;
+
+        &:hover {
+            background: colors.$cadmium-red-80;
+        }
+    }
+}

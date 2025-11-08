@@ -1,0 +1,33 @@
+@use "variables/colors" as colors;
+
+.button {
+    padding: 10px 20px;
+    font-family: Roboto;
+    font-weight: 600;
+    font-size: 30px;
+    border-radius: 10px;
+    border: none;
+    color: var(--bg-color);
+    transition: all ease-in-out 0.3s;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &--primary {
+        background: colors.$dark-pastel-purple-100;
+
+        &:hover {
+            background: colors.$dark-pastel-purple-80;
+        }
+    }
+
+    &--secondary {
+        background: colors.$blueberry-100;
+
+        &:hover {
+            background: colors.$blueberry-80;
+        }
+    }
+}
