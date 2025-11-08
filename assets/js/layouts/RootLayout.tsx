@@ -1,23 +1,14 @@
-import Notification, {
-    NotificationProps,
-} from "@/components/core/Notification";
+import Notification from "@/components/core/Notification";
+import { Flash } from "@/types/Flash";
+import { LayoutProps } from "@/types/LayoutProps";
 import { Head, usePage } from "@inertiajs/react";
-import { ReactNode, useEffect } from "react";
-
-type MainLayoutProps = {
-    className?: string;
-    title?: string;
-    description?: string;
-    children: ReactNode;
-};
+import { useEffect } from "react";
 
 type PageProps = {
-    flash: {
-        notifications?: NotificationProps[];
-    };
+    flash: Flash;
 };
 
-const MainLayout: React.FC<MainLayoutProps> = ({
+const RootLayout: React.FC<LayoutProps> = ({
     className = "",
     title,
     description,
@@ -46,11 +37,9 @@ const MainLayout: React.FC<MainLayoutProps> = ({
                     <meta name="description" content={description} />
                 )}
             </Head>
-            <div className={`main-layout ${className}`}>
-                <div className="main-layout__notifications">
-                    {notifications?.map((props) => (
-                        <Notification {...props} />
-                    ))}
+            <div className={`root-layout ${className}`}>
+                <div className="root-layout__notifications">
+                    {notifications?.map((props) => <Notification {...props} />)}
                 </div>
                 {children}
             </div>
@@ -58,4 +47,4 @@ const MainLayout: React.FC<MainLayoutProps> = ({
     );
 };
 
-export default MainLayout;
+export default RootLayout;

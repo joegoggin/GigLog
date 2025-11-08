@@ -4,7 +4,7 @@ import Form from "@/components/core/Form";
 import { NotificationType } from "@/components/core/Notification";
 import TextInput from "@/components/core/TextInput";
 import { useNotificationEffect } from "@/hooks/useNotificationEffect";
-import MainLayout from "@/layouts/MainLayout";
+import FullscreenCenteredLayout from "@/layouts/FullScreenCenteredLayout";
 import { useForm } from "@inertiajs/react";
 import { useEffect } from "react";
 
@@ -29,7 +29,7 @@ const LogInPage = () => {
     }, [data]);
 
     return (
-        <MainLayout className="log-in-page" title="Log In">
+        <FullscreenCenteredLayout className="log-in-page" title="Log In">
             <h1>Log In</h1>
             <Form onSubmit={handleSubmit}>
                 <TextInput
@@ -53,7 +53,7 @@ const LogInPage = () => {
                 />
                 <Button type="submit">Log In</Button>
             </Form>
-        </MainLayout>
+        </FullscreenCenteredLayout>
     );
 };
 

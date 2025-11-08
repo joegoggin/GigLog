@@ -1,7 +1,7 @@
 import Button from "@/components/core/Button";
 import Form from "@/components/core/Form";
 import TextInput from "@/components/core/TextInput";
-import MainLayout from "@/layouts/MainLayout";
+import FullscreenCenteredLayout from "@/layouts/FullScreenCenteredLayout";
 import { useForm } from "@inertiajs/react";
 
 const SetPasswordPage: React.FC = () => {
@@ -15,7 +15,10 @@ const SetPasswordPage: React.FC = () => {
     };
 
     return (
-        <MainLayout className="set-password-page" title="Set Password">
+        <FullscreenCenteredLayout
+            className="set-password-page"
+            title="Set Password"
+        >
             <h1>Set Password Page</h1>
             <Form onSubmit={handleSubmit}>
                 <TextInput
@@ -34,7 +37,7 @@ const SetPasswordPage: React.FC = () => {
                 />
                 <Button type="submit">Set Password</Button>
             </Form>
-        </MainLayout>
+        </FullscreenCenteredLayout>
     );
 };
 

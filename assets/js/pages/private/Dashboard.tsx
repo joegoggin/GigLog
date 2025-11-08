@@ -1,5 +1,5 @@
 import Button from "@/components/core/Button";
-import MainLayout from "@/layouts/MainLayout";
+import FullscreenCenteredLayout from "@/layouts/FullScreenCenteredLayout";
 import { router } from "@inertiajs/react";
 
 const DashboardPage: React.FC = () => {
@@ -8,10 +8,10 @@ const DashboardPage: React.FC = () => {
     };
 
     return (
-        <MainLayout className="dashboard-page" title="Dashboard">
+        <FullscreenCenteredLayout className="dashboard-page" title="Dashboard">
             <h1>Dashboard Page</h1>
             <Button onClick={handleClick}>Log Out</Button>
-        </MainLayout>
+        </FullscreenCenteredLayout>
     );
 };
 

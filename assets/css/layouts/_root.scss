@@ -1,10 +1,4 @@
-.main-layout {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-
+.root-layout {
     &__notifications {
         position: absolute;
         top: 40px;

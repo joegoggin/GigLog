@@ -1,9 +1,9 @@
 import Button, { ButtonVariant } from "@/components/core/Button";
-import MainLayout from "@/layouts/MainLayout";
+import FullscreenCenteredLayout from "@/layouts/FullScreenCenteredLayout";
 
 const HomePage: React.FC = () => {
     return (
-        <MainLayout className="home-page" title="Phoenix Inertia Template">
+        <FullscreenCenteredLayout className="home-page" title="GigLog">
             <h1>GigLog</h1>
             <div className="home-page__text">
                 <p>
@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
                     Log In
                 </Button>
             </div>
-        </MainLayout>
+        </FullscreenCenteredLayout>
     );
 };
 

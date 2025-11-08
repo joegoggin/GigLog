@@ -3,7 +3,7 @@ import Form from "@/components/core/Form";
 import { NotificationType } from "@/components/core/Notification";
 import TextInput from "@/components/core/TextInput";
 import { useNotificationEffect } from "@/hooks/useNotificationEffect";
-import MainLayout from "@/layouts/MainLayout";
+import FullscreenCenteredLayout from "@/layouts/FullScreenCenteredLayout";
 import { useForm } from "@inertiajs/react";
 
 const SignUpPage: React.FC = () => {
@@ -24,7 +24,7 @@ const SignUpPage: React.FC = () => {
     }, NotificationType.SUCCESS);
 
     return (
-        <MainLayout className="sign-up" title="Sign Up">
+        <FullscreenCenteredLayout className="sign-up" title="Sign Up">
             <h1>Sign Up</h1>
             <Form onSubmit={handleSubmit}>
                 <TextInput
@@ -47,7 +47,7 @@ const SignUpPage: React.FC = () => {
                 />
                 <Button type="submit">Sign Up</Button>
             </Form>
-        </MainLayout>
+        </FullscreenCenteredLayout>
     );
 };
 
