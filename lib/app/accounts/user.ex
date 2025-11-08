@@ -89,7 +89,7 @@ defmodule App.Accounts.User do
 
   defp validate_password(changeset, opts) do
     changeset
-    |> validate_required([:password, :password_confirmation], message: "is required")
+    |> validate_required([:password], message: "is required")
     |> validate_length(:password, min: 12, max: 72)
     # Examples of additional password validation:
     |> validate_format(:password, ~r/[a-z]/,
