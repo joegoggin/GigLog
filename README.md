@@ -1,4 +1,4 @@
-# Phoenix Inertia Auth Template
+# GigLog
 
 To start your Phoenix server:
 
