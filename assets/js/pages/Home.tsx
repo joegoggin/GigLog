@@ -1,7 +1,15 @@
 import Button, { ButtonVariant } from "@/components/core/Button";
+import { useAuth } from "@/hooks/useAuth";
 import FullscreenCenteredLayout from "@/layouts/FullScreenCenteredLayout";
+import { useEffect } from "react";
 
 const HomePage: React.FC = () => {
+    const { isLoggedIn } = useAuth();
+
+    useEffect(() => {
+        console.log(isLoggedIn);
+    }, [isLoggedIn]);
+
     return (
         <FullscreenCenteredLayout className="home-page" title="GigLog">
             <h1>GigLog</h1>
@@ -18,10 +26,19 @@ const HomePage: React.FC = () => {
                 </p>
             </div>
             <div className="home-page__buttons">
-                <Button href={"/auth/sign-up"}>Sign Up</Button>
-                <Button href={"/auth/log-in"} variant={ButtonVariant.SECONDARY}>
-                    Log In
-                </Button>
+                {isLoggedIn ? (
+                    <Button href="/dashboard">View Dashboard</Button>
+                ) : (
+                    <>
+                        <Button href="/auth/sign-up">Sign Up</Button>
+                        <Button
+                            href="/auth/log-in"
+                            variant={ButtonVariant.SECONDARY}
+                        >
+                            Log In
+                        </Button>
+                    </>
+                )}
             </div>
         </FullscreenCenteredLayout>
     );

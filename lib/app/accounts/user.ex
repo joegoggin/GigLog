@@ -2,6 +2,8 @@ defmodule App.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias AppWeb.Utils.MapUtils
+
   schema "users" do
     field :first_name, :string
     field :last_name, :string
@@ -12,6 +14,16 @@ defmodule App.Accounts.User do
     field :authenticated_at, :utc_datetime, virtual: true
 
     timestamps(type: :utc_datetime)
+  end
+
+  @doc """
+  converts user into map with camel case keys to send to client 
+  """
+  def to_json(user) do
+    user
+    |> Map.take([:id, :first_name, :last_name, :email])
+    |> MapUtils.camelize()
+    |> Map.new()
   end
 
   @doc """

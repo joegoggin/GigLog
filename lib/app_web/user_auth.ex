@@ -4,6 +4,7 @@ defmodule AppWeb.UserAuth do
   import Plug.Conn
   import Phoenix.Controller
 
+  alias App.Notifications.Notification
   alias App.Accounts
   alias App.Accounts.Scope
 
@@ -199,8 +200,12 @@ defmodule AppWeb.UserAuth do
     if conn.assigns.current_scope && conn.assigns.current_scope.user do
       conn
     else
+      notifications = [
+        Notification.new(:error, "Unauthorized", "You must log in to access this page.")
+      ]
+
       conn
-      |> put_flash(:error, "You must log in to access this page.")
+      |> put_flash(:notifications, notifications)
       |> maybe_store_return_to()
       |> redirect(to: ~p"/auth/log-in")
       |> halt()

@@ -6,7 +6,6 @@ import TextInput from "@/components/core/TextInput";
 import { useNotificationEffect } from "@/hooks/useNotificationEffect";
 import FullscreenCenteredLayout from "@/layouts/FullScreenCenteredLayout";
 import { useForm } from "@inertiajs/react";
-import { useEffect } from "react";
 
 const LogInPage = () => {
     const { data, setData, post } = useForm({
@@ -23,10 +22,6 @@ const LogInPage = () => {
         setData("email", "");
         setData("password", "");
     }, NotificationType.ERROR);
-
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
 
     return (
         <FullscreenCenteredLayout className="log-in-page" title="Log In">

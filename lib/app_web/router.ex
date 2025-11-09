@@ -2,6 +2,7 @@ defmodule AppWeb.Router do
   use AppWeb, :router
 
   import AppWeb.UserAuth
+  alias AppWeb.Plugs
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -12,6 +13,7 @@ defmodule AppWeb.Router do
     plug :put_secure_browser_headers
     plug :fetch_current_scope_for_user
     plug Inertia.Plug
+    plug Plugs.AssignUserProp
   end
 
   pipeline :api do

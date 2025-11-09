@@ -20,7 +20,9 @@ config :app, :scopes,
     test_setup_helper: :register_and_log_in_user
   ]
 
-config :inertia, endpoint: AppWeb.Endpoint
+config :inertia,
+  endpoint: AppWeb.Endpoint,
+  camelize_props: true
 
 config :app,
   ecto_repos: [App.Repo],
