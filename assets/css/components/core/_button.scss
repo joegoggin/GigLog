@@ -16,18 +16,18 @@
     }
 
     &--primary {
-        background: colors.$dark-pastel-purple-100;
+        background: colors.$green-100;
 
         &:hover {
-            background: colors.$dark-pastel-purple-80;
+            background: colors.$green-80;
         }
     }
 
     &--secondary {
-        background: colors.$blueberry-100;
+        background: colors.$blue-100;
 
         &:hover {
-            background: colors.$blueberry-80;
+            background: colors.$blue-80;
         }
     }
 }

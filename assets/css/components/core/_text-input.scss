@@ -27,22 +27,22 @@
 
         &:focus {
             transform: scaleX(1.01);
-            border-bottom: 1px solid colors.$dark-pastel-purple-100;
-            color: colors.$dark-pastel-purple-100;
+            border-bottom: 1px solid colors.$cyan-100;
+            color: colors.$cyan-100;
 
             &::placeholder {
-                color: colors.$dark-pastel-purple-100;
+                color: colors.$cyan-100;
             }
         }
     }
 
     &--error {
         input {
-            border-bottom: 1px solid colors.$cadmium-red-100;
-            color: colors.$cadmium-red-100;
+            border-bottom: 1px solid colors.$red-100;
+            color: colors.$red-100;
 
             &::placeholder {
-                color: colors.$cadmium-red-100;
+                color: colors.$red-100;
                 opacity: 1;
             }
         }
@@ -56,6 +56,6 @@
 
     p {
         margin-top: 5px;
-        color: colors.$cadmium-red-100;
+        color: colors.$red-100;
     }
 }

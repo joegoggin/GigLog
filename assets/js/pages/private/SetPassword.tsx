@@ -11,7 +11,7 @@ const SetPasswordPage: React.FC = () => {
     });
 
     const handleSubmit = () => {
-        put("/set-password");
+        put("/settings/set-password");
     };
 
     return (

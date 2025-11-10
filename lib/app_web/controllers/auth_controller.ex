@@ -107,4 +107,14 @@ defmodule AppWeb.AuthController do
         end
     end
   end
+
+  @doc """
+    route: delete /auth/log-out
+
+    Logs out user
+  """
+  def log_out(conn, _params) do
+    conn
+    |> UserAuth.log_out_user()
+  end
 end

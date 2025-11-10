@@ -20,13 +20,13 @@ defmodule AppWeb.Router do
     plug :accepts, ["json"]
   end
 
-  # API routes
+  # API Routers
 
   scope "/api", AppWeb do
     pipe_through :api
   end
 
-  # public routes
+  # Public router
 
   scope "/", AppWeb do
     pipe_through :browser
@@ -34,24 +34,7 @@ defmodule AppWeb.Router do
     get "/", PublicController, :home
   end
 
-  # private routes
-
-  scope "/", AppWeb do
-    pipe_through [:browser, :require_authenticated_user]
-
-    get "/dashboard", PrivateController, :dashboard_page
-
-    get "/set-password", PrivateController, :set_password_page
-    put "/set-password", PrivateController, :set_password
-
-    delete "/log-out", PrivateController, :log_out
-
-    # get "/users/settings", UserSettingsController, :edit
-    # put "/users/settings", UserSettingsController, :update
-    # get "/users/settings/confirm-email/:token", UserSettingsController, :confirm_email
-  end
-
-  # Authentication routes
+  # Authentication router
 
   scope "/auth", AppWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
@@ -62,6 +45,50 @@ defmodule AppWeb.Router do
     get "/log-in", AuthController, :log_in_page
     post "/log-in", AuthController, :log_in
     get "/log-in/:token", AuthController, :magic_link_log_in
+  end
+
+  scope "/auth", AppWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    delete "/log-out", AuthController, :log_out
+  end
+
+  # Dashboard Router
+  scope "/dashboard", AppWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    get "/", DashboardController, :dashboard_page
+  end
+
+  # Companies Router
+  scope "/companies", AppWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    get "/", CompaniesController, :companies_page
+  end
+
+  # Jobs Router
+  scope "/jobs", AppWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    get "/", JobsController, :jobs_page
+  end
+
+  # Jobs Router
+  scope "/payments", AppWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    get "/", PaymentsController, :payments_page
+  end
+
+  # Settings Router
+  scope "/settings", AppWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    get "/", SettingsController, :settings_page
+
+    get "/set-password", SettingsController, :set_password_page
+    put "/set-password", SettingsController, :set_password
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

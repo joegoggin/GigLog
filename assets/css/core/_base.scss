@@ -12,13 +12,13 @@
 }
 
 [data-theme="light"] {
-    --bg-color: #{colors.$bright-gray-100};
-    --text-color: #{colors.$chinese-black-100};
+    --bg-color: #{colors.$white};
+    --text-color: #{colors.$black};
 }
 
 [data-theme="dark"] {
-    --bg-color: #{colors.$chinese-black-100};
-    --text-color: white;
+    --bg-color: #{colors.$black};
+    --text-color: #{colors.$white};
 }
 
 body {
