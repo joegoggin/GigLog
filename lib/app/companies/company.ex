@@ -2,11 +2,13 @@ defmodule App.Companies.Company do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias App.Accounts
+
   schema "companies" do
     field(:name, :string)
     field(:requires_tax_withholdings, :boolean, default: false)
     field(:tax_witholding_rate, :float)
-    field(:user_id, :id)
+    belongs_to :user, Accounts.User
 
     timestamps(type: :utc_datetime)
   end
