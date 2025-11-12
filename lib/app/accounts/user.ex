@@ -3,6 +3,7 @@ defmodule App.Accounts.User do
   import Ecto.Changeset
 
   alias AppWeb.Utils.MapUtils
+  alias App.Companies
 
   schema "users" do
     field :first_name, :string
@@ -12,6 +13,7 @@ defmodule App.Accounts.User do
     field :hashed_password, :string, redact: true
     field :confirmed_at, :utc_datetime
     field :authenticated_at, :utc_datetime, virtual: true
+    has_many :companies, Companies.Company
 
     timestamps(type: :utc_datetime)
   end
