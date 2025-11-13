@@ -9,7 +9,7 @@ defmodule App.CompaniesTest do
     import App.AccountsFixtures, only: [user_scope_fixture: 0]
     import App.CompaniesFixtures
 
-    @invalid_attrs %{name: nil, requires_tax_withholdings: nil, tax_witholding_rate: nil}
+    @invalid_attrs %{name: nil, requires_tax_withholdings: nil, tax_withholding_rate: nil}
 
     test "list_companies/1 returns all scoped companies" do
       scope = user_scope_fixture()
@@ -29,7 +29,12 @@ defmodule App.CompaniesTest do
     end
 
     test "create_company/2 with valid data creates a company" do
-      valid_attrs = %{name: "some name", requires_tax_withholdings: true, tax_witholding_rate: 120.5}
+      valid_attrs = %{
+        name: "some name",
+        requires_tax_withholdings: true,
+        tax_witholding_rate: 120.5
+      }
+
       scope = user_scope_fixture()
 
       assert {:ok, %Company{} = company} = Companies.create_company(scope, valid_attrs)
@@ -47,7 +52,12 @@ defmodule App.CompaniesTest do
     test "update_company/3 with valid data updates the company" do
       scope = user_scope_fixture()
       company = company_fixture(scope)
-      update_attrs = %{name: "some updated name", requires_tax_withholdings: false, tax_witholding_rate: 456.7}
+
+      update_attrs = %{
+        name: "some updated name",
+        requires_tax_withholdings: false,
+        tax_witholding_rate: 456.7
+      }
 
       assert {:ok, %Company{} = company} = Companies.update_company(scope, company, update_attrs)
       assert company.name == "some updated name"
@@ -68,7 +78,10 @@ defmodule App.CompaniesTest do
     test "update_company/3 with invalid data returns error changeset" do
       scope = user_scope_fixture()
       company = company_fixture(scope)
-      assert {:error, %Ecto.Changeset{}} = Companies.update_company(scope, company, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Companies.update_company(scope, company, @invalid_attrs)
+
       assert company == Companies.get_company!(scope, company.id)
     end
 
