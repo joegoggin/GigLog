@@ -11,7 +11,7 @@ defmodule App.Repo.Migrations.CreatePayments do
       add :payment_received, :boolean, default: false, null: false
       add :transfer_received, :boolean, default: false, null: false
       add :tax_withholdings_covered, :boolean, default: false, null: false
-      add :job_id, references(:jobs, on_delete: :nothing)
+      add :job_id, references(:jobs, on_delete: :delete_all)
       add :user_id, references(:users, type: :id, on_delete: :delete_all)
 
       timestamps(type: :utc_datetime)
