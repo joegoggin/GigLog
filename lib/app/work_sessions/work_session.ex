@@ -6,11 +6,11 @@ defmodule App.WorkSessions.WorkSession do
   alias App.Accounts
 
   schema "work_sessions" do
-    field :start_time, :time
-    field :end_time, :time
+    field :start_time, :utc_datetime
+    field :end_time, :utc_datetime
     field :is_running, :boolean, default: false
-    field :accumulated_paused_duration, :time
-    field :paused_at, :time
+    field :accumulated_paused_duration, :integer, default: 0
+    field :paused_at, :utc_datetime
     field :total_minutes_worked, :integer, default: 0
     field :time_reported, :boolean, default: false
 
@@ -29,15 +29,12 @@ defmodule App.WorkSessions.WorkSession do
       :is_running,
       :accumulated_paused_duration,
       :paused_at,
-      :total_minutes_worked
+      :total_minutes_worked,
+      :time_reported,
+      :job_id
     ])
     |> validate_required([
-      :start_time,
-      :end_time,
-      :is_running,
-      :accumulated_paused_duration,
-      :paused_at,
-      :total_minutes_worked
+      :job_id
     ])
     |> put_change(:user_id, user_scope.user.id)
   end
