@@ -19,8 +19,8 @@ defmodule App.Companies.Company do
   @doc false
   def changeset(company, attrs, user_scope) do
     company
-    |> cast(attrs, [:name, :requires_tax_withholdings, :tax_withholding_rate])
-    |> validate_required([:name, :requires_tax_withholdings])
+    |> cast(attrs, [:name, :requires_tax_withholdings, :tax_withholding_rate, :company_id])
+    |> validate_required([:name, :requires_tax_withholdings, :company_id])
     |> put_change(:user_id, user_scope.user.id)
   end
 end
