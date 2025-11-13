@@ -5,9 +5,9 @@ defmodule App.Repo.Migrations.CreateJobs do
     create table(:jobs) do
       add :title, :string
       add :payment_type, :string
-      add :number_of_payouts, :integer
-      add :payout_amount, :decimal
-      add :hourly_rate, :decimal
+      add :number_of_payouts, :integer, null: true
+      add :payout_amount, :decimal, null: true
+      add :hourly_rate, :decimal, null: true
       add :company_id, references(:companies, on_delete: :nothing)
       add :user_id, references(:users, type: :id, on_delete: :delete_all)
 
