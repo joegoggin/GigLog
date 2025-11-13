@@ -35,17 +35,13 @@ defmodule App.Payments.Payment do
       :transfer_initiated,
       :payment_received,
       :transfer_received,
-      :tax_withholdings_covered
+      :tax_withholdings_covered,
+      :job_id
     ])
     |> validate_required([
       :total,
       :payout_type,
-      :expected_payout_date,
-      :expected_transfer_date,
-      :transfer_initiated,
-      :payment_received,
-      :transfer_received,
-      :tax_withholdings_covered
+      :job_id
     ])
     |> put_change(:user_id, user_scope.user.id)
   end
