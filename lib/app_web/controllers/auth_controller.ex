@@ -60,7 +60,7 @@ defmodule AppWeb.AuthController do
       {:ok, {user, _expired_tokens}} ->
         conn
         |> UserAuth.log_in_user(user)
-        |> redirect(to: ~p"/set-password")
+        |> redirect(to: ~p"/settings/set-password")
 
       {:error, :not_found} ->
         conn
