@@ -3,11 +3,11 @@ defmodule App.Repo.Migrations.CreateWorkSessions do
 
   def change do
     create table(:work_sessions) do
-      add :start_time, :utc_datetime, null: true
-      add :end_time, :utc_datetime, null: true
+      add :start_time, :utc_datetime
+      add :end_time, :utc_datetime
       add :is_running, :boolean, default: false, null: false
       add :accumulated_paused_duration, :integer, default: 0
-      add :paused_at, :utc_datetime, null: true
+      add :paused_at, :utc_datetime
       add :total_minutes_worked, :integer, default: 0
       add :time_reported, :boolean, default: false
       add :job_id, references(:jobs, on_delete: :delete_all)

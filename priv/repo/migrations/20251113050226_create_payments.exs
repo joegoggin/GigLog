@@ -3,10 +3,10 @@ defmodule App.Repo.Migrations.CreatePayments do
 
   def change do
     create table(:payments) do
-      add :total, :decimal
-      add :payout_type, :string
-      add :expected_payout_date, :date, null: true
-      add :expected_transfer_date, :date, null: true
+      add :total, :decimal, null: false
+      add :payout_type, :string, null: false
+      add :expected_payout_date, :date
+      add :expected_transfer_date, :date
       add :transfer_initiated, :boolean, default: false, null: false
       add :payment_received, :boolean, default: false, null: false
       add :transfer_received, :boolean, default: false, null: false
