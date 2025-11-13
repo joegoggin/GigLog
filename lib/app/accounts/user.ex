@@ -5,6 +5,7 @@ defmodule App.Accounts.User do
   alias AppWeb.Utils.MapUtils
   alias App.Companies
   alias App.Jobs
+  alias App.Payments
 
   schema "users" do
     field :first_name, :string
@@ -17,6 +18,7 @@ defmodule App.Accounts.User do
 
     has_many :companies, Companies.Company
     has_many :jobs, Jobs.Job
+    has_many :payments, Payments.Payment
 
     timestamps(type: :utc_datetime)
   end

@@ -2,6 +2,7 @@ defmodule App.Jobs.Job do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias App.Payments
   alias App.Accounts
   alias App.Companies
 
@@ -14,6 +15,7 @@ defmodule App.Jobs.Job do
 
     belongs_to :company, Companies.Company
     belongs_to :user, Accounts.User
+    has_many :payments, Payments.Payment
 
     timestamps(type: :utc_datetime)
   end
