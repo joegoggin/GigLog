@@ -9,8 +9,8 @@ defmodule App.Jobs.Job do
     field :title, :string
     field :payment_type, Ecto.Enum, values: [:hourly, :payouts]
     field :number_of_payouts, :integer
-    field :payout_amount, :float
-    field :hourly_rate, :float
+    field :payout_amount, :decimal
+    field :hourly_rate, :decimal
 
     belongs_to :company, Companies.Company
     belongs_to :user, Accounts.User
