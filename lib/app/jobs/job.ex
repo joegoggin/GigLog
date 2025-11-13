@@ -25,13 +25,16 @@ defmodule App.Jobs.Job do
   @doc false
   def changeset(job, attrs, user_scope) do
     job
-    |> cast(attrs, [:title, :payment_type, :number_of_payouts, :payout_amount, :hourly_rate])
-    |> validate_required([
+    |> cast(attrs, [
       :title,
       :payment_type,
       :number_of_payouts,
       :payout_amount,
       :hourly_rate
+    ])
+    |> validate_required([
+      :title,
+      :payment_type
     ])
     |> put_change(:user_id, user_scope.user.id)
   end
