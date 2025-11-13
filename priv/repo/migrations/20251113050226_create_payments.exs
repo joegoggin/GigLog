@@ -3,7 +3,7 @@ defmodule App.Repo.Migrations.CreatePayments do
 
   def change do
     create table(:payments) do
-      add :total, :decimal, null: false
+      add :total, :decimal, precision: 10, scale: 2, null: false
       add :payout_type, :string, null: false
       add :expected_payout_date, :date
       add :expected_transfer_date, :date
