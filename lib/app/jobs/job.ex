@@ -5,6 +5,7 @@ defmodule App.Jobs.Job do
   alias App.Payments
   alias App.Accounts
   alias App.Companies
+  alias App.WorkSessions
 
   schema "jobs" do
     field :title, :string
@@ -16,6 +17,7 @@ defmodule App.Jobs.Job do
     belongs_to :company, Companies.Company
     belongs_to :user, Accounts.User
     has_many :payments, Payments.Payment
+    has_many :work_sessions, WorkSessions.WorkSession
 
     timestamps(type: :utc_datetime)
   end

@@ -12,6 +12,7 @@ defmodule App.WorkSessions.WorkSession do
     field :accumulated_paused_duration, :time
     field :paused_at, :time
     field :total_minutes_worked, :integer, default: 0
+    field :time_reported, :boolean, default: false
 
     belongs_to :job, Jobs.Job
     belongs_to :user, Accounts.User

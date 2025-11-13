@@ -6,6 +6,7 @@ defmodule App.Accounts.User do
   alias App.Companies
   alias App.Jobs
   alias App.Payments
+  alias App.WorkSessions
 
   schema "users" do
     field :first_name, :string
@@ -19,6 +20,7 @@ defmodule App.Accounts.User do
     has_many :companies, Companies.Company
     has_many :jobs, Jobs.Job
     has_many :payments, Payments.Payment
+    has_many :work_sessions, WorkSessions.WorkSession
 
     timestamps(type: :utc_datetime)
   end

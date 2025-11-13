@@ -9,6 +9,7 @@ defmodule App.Repo.Migrations.CreateWorkSessions do
       add :accumulated_paused_duration, :time
       add :paused_at, :time, null: true
       add :total_minutes_worked, :integer, default: 0
+      add :time_reported, :boolean, default: false
       add :job_id, references(:jobs, on_delete: :nothing)
       add :user_id, references(:users, type: :id, on_delete: :delete_all)
 
