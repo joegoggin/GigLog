@@ -32,7 +32,7 @@ defmodule App.CompaniesTest do
       valid_attrs = %{
         name: "some name",
         requires_tax_withholdings: true,
-        tax_witholding_rate: 120.5
+        tax_withholding_rate: 120.5
       }
 
       scope = user_scope_fixture()
@@ -40,7 +40,7 @@ defmodule App.CompaniesTest do
       assert {:ok, %Company{} = company} = Companies.create_company(scope, valid_attrs)
       assert company.name == "some name"
       assert company.requires_tax_withholdings == true
-      assert company.tax_witholding_rate == 120.5
+      assert company.tax_withholding_rate == 120.5
       assert company.user_id == scope.user.id
     end
 
