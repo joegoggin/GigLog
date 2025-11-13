@@ -8,7 +8,7 @@ defmodule App.Companies.Company do
   schema "companies" do
     field(:name, :string)
     field(:requires_tax_withholdings, :boolean, default: false)
-    field(:tax_witholding_rate, :float)
+    field(:tax_withholding_rate, :float)
 
     belongs_to :user, Accounts.User
     has_many :jobs, Jobs.Job
@@ -19,8 +19,8 @@ defmodule App.Companies.Company do
   @doc false
   def changeset(company, attrs, user_scope) do
     company
-    |> cast(attrs, [:name, :requires_tax_withholdings, :tax_witholding_rate])
-    |> validate_required([:name, :requires_tax_withholdings, :tax_witholding_rate])
+    |> cast(attrs, [:name, :requires_tax_withholdings, :tax_withholding_rate])
+    |> validate_required([:name, :requires_tax_withholdings])
     |> put_change(:user_id, user_scope.user.id)
   end
 end
