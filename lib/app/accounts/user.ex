@@ -4,6 +4,7 @@ defmodule App.Accounts.User do
 
   alias AppWeb.Utils.MapUtils
   alias App.Companies
+  alias App.Jobs
 
   schema "users" do
     field :first_name, :string
@@ -13,7 +14,9 @@ defmodule App.Accounts.User do
     field :hashed_password, :string, redact: true
     field :confirmed_at, :utc_datetime
     field :authenticated_at, :utc_datetime, virtual: true
+
     has_many :companies, Companies.Company
+    has_many :jobs, Jobs.Job
 
     timestamps(type: :utc_datetime)
   end
