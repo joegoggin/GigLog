@@ -42,6 +42,7 @@ defmodule App.Companies do
   """
   def list_companies(%Scope{} = scope) do
     Repo.all_by(Company, user_id: scope.user.id)
+    |> Company.copmanies_to_json()
   end
 
   @doc """

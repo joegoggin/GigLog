@@ -1,0 +1,28 @@
+.icon-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: max-content;
+    transition: all ease-in-out 0.3s;
+
+    &:hover {
+        transform: scale(1.1);
+
+        p {
+            color: var(--bg-color);
+        }
+
+        svg {
+            fill: var(--bg-color);
+            color: var(--bg-color);
+        }
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+        fill: var(--text-color);
+        color: var(--bg-color);
+    }
+}

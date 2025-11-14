@@ -65,6 +65,9 @@ defmodule AppWeb.Router do
     pipe_through [:browser, :require_authenticated_user]
 
     get "/", CompaniesController, :companies_page
+
+    get "/:company_id", CompaniesController, :view_company_page
+    delete "/:company_id", CompaniesController, :delete_company
   end
 
   # Jobs Router
@@ -72,6 +75,8 @@ defmodule AppWeb.Router do
     pipe_through [:browser, :require_authenticated_user]
 
     get "/", JobsController, :jobs_page
+
+    get "/create", JobsController, :create_job_page
   end
 
   # Jobs Router

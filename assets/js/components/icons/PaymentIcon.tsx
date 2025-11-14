@@ -12,14 +12,14 @@ const PaymentIcon: React.FC = () => {
                 fill="none"
                 stroke="currentColor"
                 strokeLinejoin="round"
-                stroke-width="32"
+                strokeWidth="32"
             />
             <path
                 fill="none"
                 stroke="currentColor"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                stroke-width="32"
+                strokeWidth="32"
                 d="M64 384h384M96 432h320"
             />
             <circle

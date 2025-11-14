@@ -2,8 +2,10 @@ defmodule App.Companies.Company do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias App.Companies.Company
   alias App.Accounts
   alias App.Jobs
+  alias AppWeb.Utils.MapUtils
 
   schema "companies" do
     field(:name, :string)
@@ -14,6 +16,24 @@ defmodule App.Companies.Company do
     has_many :jobs, Jobs.Job
 
     timestamps(type: :utc_datetime)
+  end
+
+  @doc """
+  converts company into map with camel case keys to send to client 
+  """
+  def to_json(company) do
+    company
+    |> Map.take([:id, :name, :requires_tax_withholdings, :tax_withholding_rate])
+    |> MapUtils.camelize()
+    |> Map.new()
+  end
+
+  @doc """
+  converts companies into list of maps with camel case keys to send to client
+  """
+  def copmanies_to_json(companies) do
+    companies
+    |> Enum.map(fn company -> Company.to_json(company) end)
   end
 
   @doc false
