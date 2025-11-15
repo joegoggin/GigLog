@@ -17,9 +17,13 @@
     }
 
     &__card {
-        background: colors.$blue-100;
         padding: 20px;
         border-radius: 10px;
+        border: 3px solid colors.$blue-100;
+
+        h3 {
+            color: colors.$blue-100;
+        }
 
         & > div {
             margin-top: 20px;
@@ -29,22 +33,22 @@
     &__add-job {
         &:hover {
             p {
-                color: colors.$green-100;
+                color: colors.$green-80;
             }
 
             svg {
-                color: colors.$green-100;
-                fill: colors.$green-100;
+                color: colors.$green-80;
+                fill: colors.$green-80;
             }
         }
 
         p {
-            color: colors.$green-80;
+            color: colors.$green-100;
         }
 
         svg {
-            color: colors.$green-80;
-            fill: colors.$green-80;
+            color: colors.$green-100;
+            fill: colors.$green-100;
         }
     }
 
@@ -61,56 +65,56 @@
         }
 
         p {
-            color: colors.$blue-60;
+            color: colors.$blue-100;
         }
 
         svg {
-            color: colors.$blue-60;
-            fill: colors.$blue-60;
+            color: colors.$blue-100;
+            fill: colors.$blue-100;
         }
     }
 
     &__edit {
         &:hover {
             p {
-                color: colors.$yellow-100;
+                color: colors.$yellow-80;
             }
 
             svg {
-                color: colors.$yellow-100;
-                fill: colors.$yellow-100;
+                color: colors.$yellow-80;
+                fill: colors.$yellow-80;
             }
         }
 
         p {
-            color: colors.$yellow-80;
+            color: colors.$yellow-100;
         }
 
         svg {
-            color: colors.$yellow-80;
-            fill: colors.$yellow-80;
+            color: colors.$yellow-100;
+            fill: colors.$yellow-100;
         }
     }
 
     &__delete {
         &:hover {
             p {
-                color: colors.$red-100;
+                color: colors.$red-80;
             }
 
             svg {
-                color: colors.$red-100;
-                fill: colors.$red-100;
+                color: colors.$red-80;
+                fill: colors.$red-80;
             }
         }
 
         p {
-            color: colors.$red-80;
+            color: colors.$red-100;
         }
 
         svg {
-            color: colors.$red-80;
-            fill: colors.$red-80;
+            color: colors.$red-100;
+            fill: colors.$red-100;
         }
     }
 }
