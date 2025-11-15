@@ -1,7 +1,6 @@
 services:
     postgres:
         image: postgres:14
-        container_name: postgres  
         env_file:
             - ./docker/env/postgres.env
         ports:
@@ -10,7 +9,6 @@ services:
             - postgres_db:/var/lib/postgresql/data
     pgadmin:
         image: dpage/pgadmin4:latest
-        container_name: pgadmin4 
         env_file:
             - ./docker/env/pgadmin.env
         ports:

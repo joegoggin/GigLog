@@ -1,0 +1,15 @@
+@use "variables/colors" as colors;
+
+.modal {
+    position: absolute;
+    inset: 0;
+    background: rgba(colors.$black, 0.8);
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100dvh;
+    }
+}

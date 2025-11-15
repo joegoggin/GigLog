@@ -3,6 +3,8 @@ import AddIcon from "@/components/icons/AddIcon";
 import DeleteIcon from "@/components/icons/DeleteIcon";
 import EditIcon from "@/components/icons/EditIcon";
 import InfoIcon from "@/components/icons/InfoIcon";
+import DeleteModal from "@/components/modals/DeleteModal";
+import Modal from "@/components/modals/Modal";
 import MainLayout from "@/layouts/MainLayout";
 import { Company } from "@/types/models/Company";
 import { usePage, router } from "@inertiajs/react";
@@ -58,6 +60,11 @@ const CompaniesPage: React.FC = () => {
                     </div>
                 ))}
             </div>
+            <DeleteModal
+                table="Company"
+                name="DataAnnotation"
+                relatedTables={["Payments", "Jobs", "Work Sessions"]}
+            />
         </MainLayout>
     );
 };

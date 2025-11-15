@@ -1,0 +1,53 @@
+@use "variables/colors" as colors;
+
+.delete-modal {
+    h3 {
+        color: colors.$red-100;
+        text-align: center;
+    }
+
+    h5 {
+        color: colors.$red-80;
+        margin-bottom: 20px;
+    }
+
+    ul {
+        align-self: flex-start;
+    }
+
+    li {
+        color: colors.$red-80;
+        font-family: Rubik;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: colors.$magenta-100;
+        padding: 20px 30px;
+        width: 50%;
+        border-radius: 10px;
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        margin-top: 30px;
+
+        button {
+            color: colors.$magenta-100;
+        }
+    }
+
+    &__delete {
+        background: colors.$red-100;
+
+        &:hover {
+            background: colors.$red-80;
+        }
+    }
+}
