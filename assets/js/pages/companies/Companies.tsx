@@ -17,7 +17,7 @@ const CompaniesPage: React.FC = () => {
     } = usePage<PageProps>();
 
     const handleDelete = (company: Company) => {
-        const route = `/companies/${company.id}`;
+        const route = `/companies/${company.id}?prompt_user=true`;
 
         router.delete(route);
     };

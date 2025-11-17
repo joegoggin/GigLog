@@ -1,13 +1,16 @@
 import Button from "@/components/core/Button";
 import Modal from "@/components/modals/Modal";
+import { SetValue } from "@/types/SetValue";
 import { router } from "@inertiajs/react";
 import { useState } from "react";
 
-type DeleteModalProps = {
+export type DeleteModalProps = {
     id: number;
     name: string;
     table: string;
     relatedTables: string[];
+    showModal: boolean;
+    setShowModal: SetValue<boolean>;
 };
 
 const DeleteModal: React.FC<DeleteModalProps> = ({
@@ -15,11 +18,11 @@ const DeleteModal: React.FC<DeleteModalProps> = ({
     name,
     table,
     relatedTables,
+    showModal,
+    setShowModal,
 }) => {
-    const [showModal, setShowModal] = useState<boolean>(true);
-
     const handleDelete = () => {
-        router.delete(`/companies/${id}`);
+        router.delete(`/companies/${id}?prompt_user=false`);
         setShowModal(false);
     };
 

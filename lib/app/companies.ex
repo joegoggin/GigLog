@@ -4,6 +4,7 @@ defmodule App.Companies do
   """
 
   import Ecto.Query, warn: false
+  alias App.Notifications.Notification
   alias App.Repo
 
   alias App.Companies.Company
@@ -47,20 +48,23 @@ defmodule App.Companies do
 
   @doc """
   Gets a single company.
-
-  Raises `Ecto.NoResultsError` if the Company does not exist.
-
   ## Examples
 
-      iex> get_company!(scope, 123)
-      %Company{}
+      iex> get_company(scope, 123)
+      {:ok, %Company{}}
 
-      iex> get_company!(scope, 456)
-      ** (Ecto.NoResultsError)
+      iex> get_company(scope, 456)
+      {:error, "Copmany with id of 456 not found."}
 
   """
-  def get_company!(%Scope{} = scope, id) do
-    Repo.get_by!(Company, id: id, user_id: scope.user.id)
+  def get_company(%Scope{} = scope, id) do
+    company = Repo.get_by(Company, id: id, user_id: scope.user.id)
+
+    if company do
+      {:ok, company}
+    else
+      {:error, "Company with id of #{id} not found."}
+    end
   end
 
   @doc """

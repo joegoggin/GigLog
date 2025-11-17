@@ -1,8 +1,9 @@
 import Notification from "@/components/core/Notification";
+import DeleteModal from "@/components/modals/DeleteModal";
 import { Flash } from "@/types/Flash";
 import { LayoutProps } from "@/types/LayoutProps";
 import { Head, usePage } from "@inertiajs/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 type PageProps = {
     flash: Flash;
@@ -14,9 +15,11 @@ const RootLayout: React.FC<LayoutProps> = ({
     description,
     children,
 }) => {
+    const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
+
     const {
         props: {
-            flash: { notifications },
+            flash: { notifications, modal },
         },
     } = usePage<PageProps>();
 
@@ -29,6 +32,14 @@ const RootLayout: React.FC<LayoutProps> = ({
         document.documentElement.setAttribute("data-theme", theme);
     }, []);
 
+    useEffect(() => {
+        if (modal?.delete) {
+            setShowDeleteModal(true);
+        } else {
+            setShowDeleteModal(false);
+        }
+    }, [modal]);
+
     return (
         <>
             <Head>
@@ -39,10 +50,19 @@ const RootLayout: React.FC<LayoutProps> = ({
             </Head>
             <div className={`root-layout ${className}`}>
                 <div className="root-layout__notifications">
-                    {notifications?.map((props) => <Notification {...props} />)}
+                    {notifications?.map((props, index) => (
+                        <Notification key={index} {...props} />
+                    ))}
                 </div>
                 {children}
             </div>
+            {showDeleteModal && modal?.delete && (
+                <DeleteModal
+                    showModal={showDeleteModal}
+                    setShowModal={setShowDeleteModal}
+                    {...modal.delete}
+                />
+            )}
         </>
     );
 };
