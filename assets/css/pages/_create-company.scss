@@ -1,0 +1,19 @@
+.create-company-page {
+    width: 100%;
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    form {
+        width: 50%;
+    }
+
+    button {
+        margin-left: 0;
+    }
+
+    &__percent {
+        margin-top: 20px;
+    }
+}

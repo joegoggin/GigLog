@@ -40,7 +40,11 @@ defmodule App.Companies.Company do
   def changeset(company, attrs, user_scope) do
     company
     |> cast(attrs, [:name, :requires_tax_withholdings, :tax_withholding_rate])
-    |> validate_required([:name, :requires_tax_withholdings])
+    |> validate_required([:name, :requires_tax_withholdings], message: "is required")
+    |> validate_number(:tax_withholding_rate,
+      greater_than_or_equal_to: 0,
+      less_than_or_equal_to: 100
+    )
     |> put_change(:user_id, user_scope.user.id)
   end
 end

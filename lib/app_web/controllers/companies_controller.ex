@@ -98,4 +98,49 @@ defmodule AppWeb.CompaniesController do
     conn
     |> put_flash(:notifications, notifications)
   end
+
+  def create_company_page(conn, _params) do
+    conn
+    |> render_inertia("companies/CreateCompany")
+  end
+
+  def create_company(
+        conn,
+        %{
+          "requires_tax_withholdings" => requires_tax_withholdings
+        } = params
+      ) do
+    scope = conn.assigns.current_scope
+
+    attrs =
+      if requires_tax_withholdings do
+        params
+      else
+        params
+        |> Map.take(["name", "requires_tax_withholdings"])
+        |> Map.put("tax_withholding_rate", 0)
+      end
+
+    dbg(attrs)
+
+    case Companies.create_company(scope, attrs) do
+      {:ok, company} ->
+        notifications = [
+          Notification.new(
+            :success,
+            "Copmany Created",
+            "A company named #{company.name} was successfully created"
+          )
+        ]
+
+        conn
+        |> put_flash(:notifications, notifications)
+        |> redirect(to: ~p"/companies/create")
+
+      {:error, changeset} ->
+        conn
+        |> assign_errors(changeset)
+        |> redirect(to: ~p"/companies/create")
+    end
+  end
 end

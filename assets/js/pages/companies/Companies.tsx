@@ -24,7 +24,14 @@ const CompaniesPage: React.FC = () => {
 
     return (
         <MainLayout className="companies-page">
-            <h1>Companies</h1>
+            <div className="companies-page__header">
+                <h1>Companies</h1>
+                <IconButton
+                    icon={<AddIcon />}
+                    label="Add New Company"
+                    href="/companies/create"
+                />
+            </div>
             <div className="companies-page__grid">
                 {companies.map((company) => (
                     <div className="companies-page__card" key={company.id}>

@@ -66,6 +66,9 @@ defmodule AppWeb.Router do
 
     get "/", CompaniesController, :companies_page
 
+    get "/create", CompaniesController, :create_company_page
+    post "/create", CompaniesController, :create_company
+
     get "/:company_id", CompaniesController, :view_company_page
     delete "/:company_id", CompaniesController, :delete_company
   end
