@@ -46,14 +46,14 @@ const CompaniesPage: React.FC = () => {
                             <IconButton
                                 className="companies-page__info"
                                 icon={<InfoIcon />}
-                                label="View More Info"
+                                label="View Company"
                                 href={`/companies/${company.id}`}
                             />
                             <IconButton
                                 className="companies-page__edit"
                                 icon={<EditIcon />}
-                                label="View More Info"
-                                href={`/companies/${company.id}`}
+                                label="Edit Company"
+                                href={`/companies/edit/${company.id}`}
                             />
                             <IconButton
                                 className="companies-page__delete"
